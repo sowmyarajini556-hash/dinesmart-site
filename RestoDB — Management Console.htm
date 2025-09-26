@@ -1,0 +1,660 @@
+<!-- Save as: restaurant_frontend.html -->
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>RestoDB — Management Console</title>
+
+  <!-- Tailwind via CDN for quick styling (no build step required) -->
+  <script src="RestoDB%20%E2%80%94%20Management%20Console_files/3.4.17"></script>
+
+  <style>
+    /* Small custom tweaks */
+    .sidebar { min-height: 100vh; }
+    .clickable { cursor: pointer; }
+    .modal-bg { background: rgba(0,0,0,0.4); }
+    .truncate-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-8{margin-bottom:2rem}.mt-2{margin-top:0.5rem}.mt-4{margin-top:1rem}.mt-8{margin-top:2rem}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-5{height:1.25rem}.h-6{height:1.5rem}.w-5{width:1.25rem}.w-6{width:1.5rem}.w-64{width:16rem}.w-full{width:100%}.flex-1{flex:1 1 0%}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-between{justify-content:space-between}.gap-1{gap:0.25rem}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.rounded{border-radius:0.25rem}.rounded-full{border-radius:9999px}.border{border-width:1px}.border-r{border-right-width:1px}.bg-gray-50{--tw-bg-opacity:1;background-color:rgb(249 250 251 / var(--tw-bg-opacity, 1))}.bg-indigo-50{--tw-bg-opacity:1;background-color:rgb(238 242 255 / var(--tw-bg-opacity, 1))}.bg-indigo-600{--tw-bg-opacity:1;background-color:rgb(79 70 229 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.p-2{padding:0.5rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.text-left{text-align:left}.font-sans{font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"}.text-2xl{font-size:1.5rem;line-height:2rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-semibold{font-weight:600}.text-gray-800{--tw-text-opacity:1;color:rgb(31 41 55 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-gray-700{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}.text-indigo-700{--tw-text-opacity:1;color:rgb(67 56 202 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.hover\:bg-gray-50:hover{--tw-bg-opacity:1;background-color:rgb(249 250 251 / var(--tw-bg-opacity, 1))}@media (min-width: 768px){.md\:block{display:block}.md\:hidden{display:none}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}}@media (min-width: 1024px){.lg\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}}</style></head>
+<body class="bg-gray-50 font-sans antialiased text-gray-800">
+
+  <script>
+    // Configure backend base URL here (leave empty for same origin)
+    const API_BASE = ""; // e.g. "http://localhost:5000"
+    // Helper: API prefixed fetch with JSON handling + fallback on error
+    async function apiFetch(path, opts = {}) {
+      const url = (API_BASE ?? "") + path;
+      try {
+        const res = await fetch(url, opts);
+        if (!res.ok) throw new Error('API-error');
+        const json = await res.json();
+        return { ok: true, data: json };
+      } catch (e) {
+        return { ok: false, error: e };
+      }
+    }
+  </script>
+
+  <div class="flex">
+    <!-- Sidebar -->
+    <aside class="sidebar w-64 bg-white border-r p-6 hidden md:block">
+      <div class="flex items-center gap-3 mb-8">
+        <div class="rounded-full bg-indigo-600 text-white p-2">
+          <!-- simple icon -->
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </div>
+        <div>
+          <h1 class="font-bold text-lg">RestoDB</h1>
+          <p class="text-xs text-gray-500">Management Console</p>
+        </div>
+      </div>
+
+      <nav id="nav" class="flex flex-col gap-1 text-sm">
+        <button class="nav-item text-left px-3 py-2 rounded bg-indigo-50 text-indigo-700" data-panel="dashboard">Dashboard</button>
+        <button class="nav-item text-left px-3 py-2 rounded hover:bg-gray-50" data-panel="menu">Menu</button>
+        <button class="nav-item text-left px-3 py-2 rounded hover:bg-gray-50" data-panel="orders">Orders</button>
+        <button class="nav-item text-left px-3 py-2 rounded hover:bg-gray-50" data-panel="billing">Billing</button>
+        <button class="nav-item text-left px-3 py-2 rounded hover:bg-gray-50" data-panel="inventory">Inventory</button>
+        <button class="nav-item text-left px-3 py-2 rounded hover:bg-gray-50" data-panel="reports">Reports</button>
+      </nav>
+
+      <div class="mt-8">
+        <p class="text-xs text-gray-500">Quick actions</p>
+        <div class="flex gap-2 mt-2">
+          <button id="quick-add-menu" class="px-3 py-2 rounded bg-indigo-600 text-white text-sm">Add Menu Item</button>
+          <button id="quick-new-order" class="px-3 py-2 rounded border text-sm">Create Order</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="flex-1 p-6">
+      <!-- Header (mobile) -->
+      <div class="md:hidden flex items-center justify-between mb-4">
+        <div class="flex items-center gap-2">
+          <button id="mobile-menu-toggle" class="p-2 rounded bg-white border">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          </button>
+          <h2 class="font-bold">RestoDB</h2>
+        </div>
+        <div class="text-sm text-gray-600">Admin</div>
+      </div>
+
+      <!-- Views container -->
+      <div id="app">
+        <!-- Dashboard -->
+        <section id="panel-dashboard" class="panel space-y-6">
+          <div class="flex items-center justify-between">
+            <h2 class="text-2xl font-bold">Dashboard</h2>
+            <div class="text-sm text-gray-500">Welcome back</div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-white p-4 rounded shadow-sm">
+              <div class="text-sm text-gray-500">Sales Today</div>
+              <div id="stat-sales" class="text-2xl font-bold mt-2">₹1250</div>
+            </div>
+            <div class="bg-white p-4 rounded shadow-sm">
+              <div class="text-sm text-gray-500">Open Orders</div>
+              <div id="stat-orders" class="text-2xl font-bold mt-2">3</div>
+            </div>
+            <div class="bg-white p-4 rounded shadow-sm">
+              <div class="text-sm text-gray-500">Low Stock Items</div>
+              <div id="stat-stock" class="text-2xl font-bold mt-2">7</div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-white p-4 rounded shadow-sm">
+              <h3 class="font-semibold mb-3">Recent Orders</h3>
+              <ul id="recent-orders" class="space-y-2 text-sm text-gray-700"><li class="flex justify-between items-center"><div class="truncate-2"><strong>#101</strong> — 4 — 1 items</div><div class="text-sm text-gray-500">₹250</div></li><li class="flex justify-between items-center"><div class="truncate-2"><strong>#102</strong> — Takeaway — 1 items</div><div class="text-sm text-gray-500">₹360</div></li></ul>
+            </div>
+            <div class="bg-white p-4 rounded shadow-sm">
+              <h3 class="font-semibold mb-3">Quick Actions</h3>
+              <div class="flex gap-2">
+                <button onclick="navigateTo('menu')" class="px-3 py-2 rounded bg-indigo-600 text-white">Manage Menu</button>
+                <button onclick="navigateTo('orders')" class="px-3 py-2 rounded border">View Orders</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Menu -->
+        <section id="panel-menu" class="panel hidden space-y-6">
+          <div class="flex items-center justify-between">
+            <h2 class="text-2xl font-bold">Menu Management</h2>
+            <div>
+              <button id="btn-add-menu" class="px-3 py-2 rounded bg-indigo-600 text-white">Add Item</button>
+            </div>
+          </div>
+
+          <div class="bg-white p-4 rounded shadow-sm">
+            <input id="menu-search" placeholder="Search menu..." class="w-full p-2 border rounded">
+            <div id="menu-list" class="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+              <!-- menu cards -->
+            </div>
+          </div>
+        </section>
+
+        <!-- Orders -->
+        <section id="panel-orders" class="panel hidden space-y-6">
+          <div class="flex items-center justify-between">
+            <h2 class="text-2xl font-bold">Orders</h2>
+            <div>
+              <button id="btn-new-order" class="px-3 py-2 rounded bg-indigo-600 text-white">New Order</button>
+            </div>
+          </div>
+
+          <div class="bg-white p-4 rounded shadow-sm">
+            <h3 class="font-semibold mb-3">Open Orders</h3>
+            <div id="orders-list" class="space-y-2">
+              <!-- orders -->
+            </div>
+          </div>
+        </section>
+
+        <!-- Billing -->
+        <section id="panel-billing" class="panel hidden space-y-6">
+          <div class="flex items-center justify-between">
+            <h2 class="text-2xl font-bold">Billing &amp; Invoices</h2>
+            <div class="text-sm text-gray-500">Generate invoice for an order</div>
+          </div>
+
+          <div class="bg-white p-4 rounded shadow-sm">
+            <div class="flex gap-2">
+              <input id="billing-order-id" placeholder="Order ID (e.g. 101)" class="p-2 border rounded">
+              <button id="btn-generate-invoice" class="px-3 py-2 rounded bg-indigo-600 text-white">Generate</button>
+            </div>
+            <div id="invoice-area" class="mt-4"></div>
+          </div>
+        </section>
+
+        <!-- Inventory -->
+        <section id="panel-inventory" class="panel hidden space-y-6">
+          <div class="flex items-center justify-between">
+            <h2 class="text-2xl font-bold">Inventory</h2>
+            <div class="text-sm text-gray-500">Track stock levels</div>
+          </div>
+
+          <div class="bg-white p-4 rounded shadow-sm">
+            <div id="inventory-list" class="space-y-2">
+              <!-- inventory rows -->
+            </div>
+          </div>
+        </section>
+
+        <!-- Reports -->
+        <section id="panel-reports" class="panel hidden space-y-6">
+          <div class="flex items-center justify-between">
+            <h2 class="text-2xl font-bold">Reports</h2>
+            <div class="text-sm text-gray-500">Sales &amp; performance</div>
+          </div>
+
+          <div class="bg-white p-4 rounded shadow-sm">
+            <h3 class="font-semibold mb-3">Sales Summary (Last 7 days)</h3>
+            <div id="report-sales" class="text-sm text-gray-700">
+              <!-- simple table -->
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modals area -->
+  <div id="modal-root"></div>
+
+  <script>
+    // -----------------------
+    // Utility & mock data
+    // -----------------------
+    const mockMenu = [
+      { id: 1, name: "Margherita Pizza", category: "Pizza", price: 250, description: "Classic cheese pizza" },
+      { id: 2, name: "Paneer Butter Masala", category: "Main", price: 180, description: "Paneer in creamy gravy" },
+      { id: 3, name: "Veg Biryani", category: "Rice", price: 160, description: "Spiced vegetable biryani" },
+    ];
+    const mockOrders = [
+      { id: 101, table: "4", items: [{ menuId:1, qty:1 }], total: 250, status: "open", placedAt: "2025-09-25T19:00:00Z" },
+      { id: 102, table: "Takeaway", items: [{ menuId:2, qty:2 }], total: 360, status: "preparing", placedAt: "2025-09-26T09:30:00Z" }
+    ];
+    const mockInventory = [
+      { id: 1, name: "Cheese (kg)", qty: 4 },
+      { id: 2, name: "Paneer (kg)", qty: 2 },
+      { id: 3, name: "Rice (kg)", qty: 20 },
+    ];
+
+    // -----------------------
+    // Navigation & panels
+    // -----------------------
+    function hideAllPanels() {
+      document.querySelectorAll('.panel').forEach(s => s.classList.add('hidden'));
+      document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('bg-indigo-50','text-indigo-700'));
+    }
+    function navigateTo(panel) {
+      hideAllPanels();
+      document.getElementById('panel-' + panel).classList.remove('hidden');
+      // highlight nav
+      document.querySelectorAll('.nav-item').forEach(b => {
+        if (b.dataset.panel === panel) b.classList.add('bg-indigo-50','text-indigo-700');
+        else b.classList.remove('bg-indigo-50','text-indigo-700');
+      });
+      // panel-specific refresh
+      if (panel === 'dashboard') loadDashboard();
+      if (panel === 'menu') loadMenu();
+      if (panel === 'orders') loadOrders();
+      if (panel === 'billing') { /* nothing */ }
+      if (panel === 'inventory') loadInventory();
+      if (panel === 'reports') loadReports();
+    }
+    document.querySelectorAll('.nav-item').forEach(b => b.addEventListener('click', () => navigateTo(b.dataset.panel)));
+    // quick action buttons
+    document.getElementById('quick-add-menu').addEventListener('click', () => showAddMenuModal());
+    document.getElementById('quick-new-order').addEventListener('click', () => showNewOrderModal());
+
+    document.getElementById('btn-add-menu').addEventListener('click', () => showAddMenuModal());
+    document.getElementById('btn-new-order').addEventListener('click', () => showNewOrderModal());
+    document.getElementById('btn-generate-invoice').addEventListener('click', generateInvoiceFromInput);
+
+    // -----------------------
+    // Dashboard
+    // -----------------------
+    async function loadDashboard() {
+      // attempt to load via API
+      const report = await apiFetch('/api/reports/sales');
+      if (report.ok) {
+        // expected shape: { today: number, openOrders: number, lowStock: number, recent: [...] }
+        document.getElementById('stat-sales').textContent = '₹' + (report.data.today ?? 0);
+        document.getElementById('stat-orders').textContent = (report.data.openOrders ?? 0);
+        document.getElementById('stat-stock').textContent = (report.data.lowStock ?? 0);
+        renderRecentOrders(report.data.recent ?? []);
+      } else {
+        // fallback mock
+        document.getElementById('stat-sales').textContent = '₹' + 1250;
+        document.getElementById('stat-orders').textContent = 3;
+        document.getElementById('stat-stock').textContent = 7;
+        renderRecentOrders(mockOrders);
+      }
+    }
+    function renderRecentOrders(list) {
+      const container = document.getElementById('recent-orders');
+      container.innerHTML = '';
+      (list.length ? list : mockOrders).slice(0,5).forEach(o => {
+        const li = document.createElement('li');
+        li.className = 'flex justify-between items-center';
+        li.innerHTML = `<div class="truncate-2"><strong>#${o.id}</strong> — ${o.table || 'NA'} — ${o.items?.length || '1'} items</div><div class="text-sm text-gray-500">₹${o.total ?? 0}</div>`;
+        container.appendChild(li);
+      });
+    }
+
+    // -----------------------
+    // Menu management
+    // -----------------------
+    async function loadMenu() {
+      const res = await apiFetch('/api/menu');
+      const items = (res.ok ? res.data : mockMenu);
+      renderMenuList(items);
+    }
+    function renderMenuList(items) {
+      const container = document.getElementById('menu-list');
+      container.innerHTML = '';
+      (items || mockMenu).forEach(it => {
+        const card = document.createElement('div');
+        card.className = 'bg-white p-4 rounded shadow-sm border';
+        card.innerHTML = `
+          <div class="flex justify-between">
+            <div>
+              <h4 class="font-semibold">${escapeHtml(it.name)}</h4>
+              <div class="text-xs text-gray-500">${escapeHtml(it.category || '')}</div>
+              <p class="text-sm mt-2 truncate-2">${escapeHtml(it.description || '')}</p>
+            </div>
+            <div class="text-right">
+              <div class="text-lg font-bold">₹${it.price}</div>
+              <div class="mt-2 flex flex-col gap-1">
+                <button class="px-2 py-1 text-xs border rounded" onclick="showEditMenuModal(${it.id})">Edit</button>
+                <button class="px-2 py-1 text-xs border rounded" onclick="deleteMenuItem(${it.id})">Delete</button>
+              </div>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+    function showAddMenuModal() {
+      showModal('Add Menu Item', `
+        <form id="form-add-menu" class="space-y-3">
+          <input name="name" placeholder="Name" class="w-full p-2 border rounded" required />
+          <input name="category" placeholder="Category" class="w-full p-2 border rounded" />
+          <input name="price" type="number" placeholder="Price" class="w-full p-2 border rounded" required />
+          <textarea name="description" placeholder="Description" class="w-full p-2 border rounded"></textarea>
+          <div class="flex justify-end gap-2">
+            <button type="button" class="px-3 py-2 rounded border" onclick="closeModal()">Cancel</button>
+            <button type="submit" class="px-3 py-2 rounded bg-indigo-600 text-white">Add</button>
+          </div>
+        </form>
+      `);
+      document.getElementById('form-add-menu').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const fd = new FormData(e.target);
+        const payload = Object.fromEntries(fd.entries());
+        payload.price = Number(payload.price);
+        const res = await apiFetch('/api/menu', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+        if (res.ok) {
+          closeModal();
+          loadMenu();
+        } else {
+          // fallback client-side add (mock)
+          mockMenu.push({ id: Date.now(), ...payload });
+          closeModal();
+          loadMenu();
+        }
+      });
+    }
+    async function showEditMenuModal(id) {
+      // try to fetch item from API else mock
+      let item;
+      const r = await apiFetch(`/api/menu/${id}`);
+      if (r.ok) item = r.data;
+      else item = mockMenu.find(m=>m.id===id) || { id, name:'', category:'', price:0, description:'' };
+
+      showModal('Edit Menu Item', `
+        <form id="form-edit-menu" class="space-y-3">
+          <input name="name" placeholder="Name" value="${escapeHtml(item.name)}" class="w-full p-2 border rounded" required />
+          <input name="category" placeholder="Category" value="${escapeHtml(item.category)}" class="w-full p-2 border rounded" />
+          <input name="price" type="number" placeholder="Price" value="${item.price}" class="w-full p-2 border rounded" required />
+          <textarea name="description" placeholder="Description" class="w-full p-2 border rounded">${escapeHtml(item.description || '')}</textarea>
+          <div class="flex justify-end gap-2">
+            <button type="button" class="px-3 py-2 rounded border" onclick="closeModal()">Cancel</button>
+            <button type="submit" class="px-3 py-2 rounded bg-indigo-600 text-white">Save</button>
+          </div>
+        </form>
+      `);
+      document.getElementById('form-edit-menu').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const fd = new FormData(e.target);
+        const payload = Object.fromEntries(fd.entries());
+        payload.price = Number(payload.price);
+        const res = await apiFetch(`/api/menu/${id}`, { method: 'PUT', headers: {'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+        if (res.ok) {
+          closeModal();
+          loadMenu();
+        } else {
+          // mock client update
+          const idx = mockMenu.findIndex(m=>m.id===id);
+          if (idx>=0) mockMenu[idx] = { id, ...payload };
+          closeModal();
+          loadMenu();
+        }
+      });
+    }
+    async function deleteMenuItem(id) {
+      if (!confirm('Delete this menu item?')) return;
+      const res = await apiFetch(`/api/menu/${id}`, { method: 'DELETE' });
+      if (res.ok) loadMenu();
+      else {
+        // mock delete
+        const idx = mockMenu.findIndex(m=>m.id===id);
+        if (idx>=0) mockMenu.splice(idx,1);
+        loadMenu();
+      }
+    }
+
+    // -----------------------
+    // Orders
+    // -----------------------
+    async function loadOrders() {
+      const res = await apiFetch('/api/orders');
+      const list = res.ok ? res.data : mockOrders;
+      renderOrders(list);
+    }
+    function renderOrders(list) {
+      const container = document.getElementById('orders-list');
+      container.innerHTML = '';
+      (list || mockOrders).forEach(o => {
+        const el = document.createElement('div');
+        el.className = 'p-3 border rounded flex justify-between items-center';
+        el.innerHTML = `
+          <div>
+            <div><strong>#${o.id}</strong> — ${o.table} — <span class="text-sm text-gray-500">${o.status}</span></div>
+            <div class="text-sm text-gray-600">Items: ${o.items.map(it=>it.qty).reduce((a,b)=>a+b,0)}</div>
+          </div>
+          <div class="text-right">
+            <div class="font-semibold">₹${o.total}</div>
+            <div class="mt-2 flex gap-2">
+              <button class="px-2 py-1 text-xs border rounded" onclick="viewOrder(${o.id})">View</button>
+              <button class="px-2 py-1 text-xs border rounded" onclick="changeOrderStatus(${o.id})">Advance</button>
+            </div>
+          </div>
+        `;
+        container.appendChild(el);
+      });
+    }
+    function viewOrder(id) {
+      const order = mockOrders.find(o=>o.id===id);
+      if (!order) { alert('Order not found'); return; }
+      showModal('Order #' + id, `
+        <div>
+          <p><strong>Table:</strong> ${order.table}</p>
+          <p><strong>Status:</strong> ${order.status}</p>
+          <p class="mt-2"><strong>Items</strong></p>
+          <ul class="mt-2">
+            ${order.items.map(it => `<li>${(mockMenu.find(m=>m.id===it.menuId)?.name || 'Item')} — qty ${it.qty}</li>`).join('')}
+          </ul>
+          <div class="mt-4 text-right"><strong>Total: ₹${order.total}</strong></div>
+        </div>
+      `);
+    }
+    function changeOrderStatus(id) {
+      // very simple "advance" status cycle: open -> preparing -> ready -> closed
+      const cycle = { open:'preparing', preparing:'ready', ready:'closed', closed:'closed' };
+      const ord = mockOrders.find(o=>o.id===id);
+      if (!ord) { alert('Not found'); return; }
+      ord.status = cycle[ord.status] || 'open';
+      loadOrders();
+      loadDashboard();
+    }
+    function showNewOrderModal() {
+      // simple order creation modal (local)
+      showModal('Create Order', `
+        <form id="form-new-order" class="space-y-3">
+          <input name="table" placeholder="Table (or 'Takeaway')" class="w-full p-2 border rounded" required />
+          <div id="order-menu-select" class="space-y-2 max-h-40 overflow-auto border p-2 rounded">
+            ${mockMenu.map(m=>`<label class="flex items-center gap-2"><input type="number" min="0" value="0" data-id="${m.id}" style="width:60px" /> <span>${escapeHtml(m.name)} — ₹${m.price}</span></label>`).join('')}
+          </div>
+          <div class="flex justify-end gap-2">
+            <button type="button" class="px-3 py-2 rounded border" onclick="closeModal()">Cancel</button>
+            <button type="submit" class="px-3 py-2 rounded bg-indigo-600 text-white">Create</button>
+          </div>
+        </form>
+      `);
+
+      document.getElementById('form-new-order').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const fd = new FormData(e.target);
+        const table = fd.get('table');
+        const qtyInputs = Array.from(document.querySelectorAll('#order-menu-select input[type=number]'));
+        const items = qtyInputs.map(i => ({ menuId: Number(i.dataset.id), qty: Number(i.value) })).filter(it=>it.qty>0);
+        if (!items.length) { alert('Add at least one item'); return; }
+        const total = items.reduce((sum,it)=> sum + (mockMenu.find(m=>m.id===it.menuId)?.price || 0)*it.qty, 0);
+        const payload = { table, items, total, status: 'open' };
+        const res = await apiFetch('/api/orders', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+        if (res.ok) {
+          closeModal();
+          loadOrders();
+          loadDashboard();
+        } else {
+          // mock insert
+          const id = Date.now();
+          mockOrders.unshift({ id, ...payload, placedAt: new Date().toISOString() });
+          closeModal();
+          loadOrders();
+          loadDashboard();
+        }
+      });
+    }
+
+    // -----------------------
+    // Billing
+    // -----------------------
+    async function generateInvoiceFromInput() {
+      const id = document.getElementById('billing-order-id').value.trim();
+      if (!id) return alert('Enter order id');
+      const r = await apiFetch(`/api/billing/${id}`);
+      if (r.ok) {
+        renderInvoice(r.data);
+      } else {
+        // mock invoice from mockOrders
+        const ord = mockOrders.find(o=>String(o.id)===String(id));
+        if (!ord) return alert('Order not found (and backend not available)');
+        renderInvoice({ order: ord, generatedAt: new Date().toISOString(), taxes: Math.round(ord.total * 0.05), payable: ord.total + Math.round(ord.total * 0.05) });
+      }
+    }
+    function renderInvoice(inv) {
+      const area = document.getElementById('invoice-area');
+      const o = inv.order;
+      area.innerHTML = `
+        <div class="border p-4 rounded">
+          <div class="flex justify-between">
+            <div>
+              <h3 class="font-semibold">Invoice — Order #${o.id}</h3>
+              <div class="text-sm text-gray-500">Table: ${o.table}</div>
+            </div>
+            <div class="text-right text-sm text-gray-500">Generated: ${new Date(inv.generatedAt).toLocaleString()}</div>
+          </div>
+          <div class="mt-3">
+            <table class="w-full text-sm">
+              <thead><tr class="text-left text-gray-600"><th>Item</th><th>Qty</th><th class="text-right">Amount</th></tr></thead>
+              <tbody>
+                ${o.items.map(it => {
+                  const name = mockMenu.find(m=>m.id===it.menuId)?.name || 'Item';
+                  const price = mockMenu.find(m=>m.id===it.menuId)?.price || 0;
+                  return `<tr><td>${escapeHtml(name)}</td><td>${it.qty}</td><td class="text-right">₹${price * it.qty}</td></tr>`;
+                }).join('')}
+              </tbody>
+            </table>
+            <div class="mt-3 text-right">
+              <div>Subtotal: ₹${o.total}</div>
+              <div>Tax: ₹${inv.taxes ?? Math.round(o.total * 0.05)}</div>
+              <div class="font-bold text-lg">Payable: ₹${inv.payable ?? (o.total + Math.round(o.total * 0.05))}</div>
+            </div>
+            <div class="mt-3 flex gap-2 justify-end">
+              <button class="px-3 py-2 border rounded" onclick="printInvoice()">Print</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+    function printInvoice() {
+      window.print();
+    }
+
+    // -----------------------
+    // Inventory
+    // -----------------------
+    async function loadInventory() {
+      const res = await apiFetch('/api/inventory');
+      const inv = res.ok ? res.data : mockInventory;
+      const container = document.getElementById('inventory-list');
+      container.innerHTML = '';
+      (inv || mockInventory).forEach(it => {
+        const row = document.createElement('div');
+        row.className = 'flex items-center justify-between p-2 border rounded';
+        row.innerHTML = `
+          <div>
+            <div class="font-semibold">${escapeHtml(it.name)}</div>
+            <div class="text-sm text-gray-500">ID: ${it.id}</div>
+          </div>
+          <div class="flex items-center gap-2">
+            <input type="number" min="0" value="${it.qty}" id="inv-${it.id}" class="w-20 p-1 border rounded" />
+            <button class="px-3 py-1 border rounded text-sm" onclick="updateInventory(${it.id})">Save</button>
+          </div>
+        `;
+        container.appendChild(row);
+      });
+    }
+    async function updateInventory(id) {
+      const el = document.getElementById('inv-' + id);
+      const qty = Number(el.value);
+      const res = await apiFetch(`/api/inventory/${id}`, { method: 'PUT', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ qty }) });
+      if (res.ok) loadInventory();
+      else {
+        const idx = mockInventory.findIndex(m=>m.id===id);
+        if (idx>=0) mockInventory[idx].qty = qty;
+        loadInventory();
+      }
+    }
+
+    // -----------------------
+    // Reports
+    // -----------------------
+    async function loadReports() {
+      const res = await apiFetch('/api/reports/sales7');
+      const data = res.ok ? res.data : [
+        { date: '2025-09-19', sales: 1200 },
+        { date: '2025-09-20', sales: 900 },
+        { date: '2025-09-21', sales: 1500 },
+        { date: '2025-09-22', sales: 700 },
+        { date: '2025-09-23', sales: 1100 },
+        { date: '2025-09-24', sales: 1400 },
+        { date: '2025-09-25', sales: 1250 },
+      ];
+      const area = document.getElementById('report-sales');
+      area.innerHTML = '<table class="w-full text-sm"><thead><tr class="text-left text-gray-600"><th>Date</th><th>Sales</th></tr></thead><tbody>' +
+        data.map(d => `<tr><td>${escapeHtml(d.date)}</td><td>₹${d.sales}</td></tr>`).join('') +
+        '</tbody></table>';
+    }
+
+    // -----------------------
+    // Modals (simple)
+    // -----------------------
+    function showModal(title, htmlContent) {
+      const root = document.getElementById('modal-root');
+      root.innerHTML = `
+        <div id="modal" class="fixed inset-0 z-50 flex items-start md:items-center justify-center p-4 modal-bg">
+          <div class="bg-white w-full md:w-2/3 lg:w-1/2 rounded shadow-lg overflow-auto max-h-[90vh]">
+            <div class="flex items-center justify-between p-4 border-b">
+              <h3 class="font-semibold">${title}</h3>
+              <button onclick="closeModal()" class="p-2"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+            </div>
+            <div class="p-4">${htmlContent}</div>
+          </div>
+        </div>
+      `;
+    }
+    function closeModal() { document.getElementById('modal-root').innerHTML = ''; }
+
+    // -----------------------
+    // Helpers
+    // -----------------------
+    function escapeHtml(s) {
+      if (s === undefined || s === null) return '';
+      return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+    }
+
+    // -----------------------
+    // Init
+    // -----------------------
+    (function init() {
+      // default view
+      navigateTo('dashboard');
+
+      // simple mobile nav toggle
+      const mobileToggle = document.getElementById('mobile-menu-toggle');
+      mobileToggle && mobileToggle.addEventListener('click', () => {
+        document.querySelector('.sidebar').classList.toggle('hidden');
+      });
+
+      // search filter for menu
+      document.getElementById('menu-search').addEventListener('input', (e) => {
+        const q = e.target.value.toLowerCase();
+        // simple filter using mockMenu or re-fetch if API present
+        const res = mockMenu.filter(m => (m.name + ' ' + m.category + ' ' + (m.description||'')).toLowerCase().includes(q));
+        renderMenuList(res);
+      });
+    })();
+  </script>
+
+
+</body></html>
